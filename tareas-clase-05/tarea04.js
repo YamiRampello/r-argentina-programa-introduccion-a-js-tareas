@@ -7,57 +7,66 @@
 // 4. obtener el número que más se repite y mostrarlo en un <em> pre-creado con el texto "El número más frecuente es..."
 const $botonLi = document.querySelector('#boton-calcular-li');
 
-$botonLi.onclick = function () {
-  cantidadNumeros = document.querySelector('#numeros_lista').value;
-  for (i = 0; i < cantidadNumeros; i++) {
-    const c_ol = document.querySelector('ol');
+function agregarTags(cantidadTags) {
+  for (let i = 0; i < cantidadTags; i++) {
+    const ol = document.querySelector('ol');
     const nuevoElementoLi = document.createElement('li');
     const nuevoElementoInput = document.createElement('input');
-    nuevoElementoInput.className = 'numero_i';
+    nuevoElementoInput.className = 'numero-i';
     nuevoElementoInput.type = 'number';
     nuevoElementoLi.appendChild(nuevoElementoInput);
-    c_ol.appendChild(nuevoElementoLi);
+    ol.appendChild(nuevoElementoLi);
   }
+  return false;
+}
+
+function sumar(numeros) {
+  let sumaNumeros = 0;
+  for (let i = 0; i < numeros.length; i++) {
+    sumaNumeros = sumaNumeros + numeros[i];
+  }
+  return sumaNumeros;
+}
+
+function getMostFrequentNumber(numbers) {
+  return numbers
+    .sort(
+      (a, b) =>
+        numbers.filter((v) => v === a).length -
+        numbers.filter((v) => v === b).length
+    )
+    .pop();
+}
+
+$botonLi.onclick = function () {
+  cantidadNumeros = document.querySelector('#numeros-lista').value;
+  agregarTags(cantidadNumeros);
   return false;
 };
 
 const $botonCalcular = document.querySelector('#boton-calcular-medidas');
 
 $botonCalcular.onclick = function () {
-  let guardaNumeros = [];
-  const numerosLista = document.getElementsByClassName('numero_i');
-  for (i = 0; i < numerosLista.length; i++) {
-    guardaNumeros.push(Number(numerosLista[i].value));
+  let numeros = [];
+  const numerosLista = document.getElementsByClassName('numero-i');
+  for (let i = 0; i < numerosLista.length; i++) {
+    numeros.push(Number(numerosLista[i].value));
   }
 
-  let sumaLista = 0;
-  let maximoLista = 0;
-  let minimoLista = 0;
-  let mediaLista = 0;
-  let modaLista = 0;
+  let maximoNumeros = 0;
+  let minimoNumeros = 0;
+  let mediaNumeros = 0;
+  let modaNumeros = 0;
 
-  for (i = 0; i < guardaNumeros.length; i++) {
-    sumaLista = sumaLista + guardaNumeros[i];
-  }
+  minimoNumeros = Math.min(...numeros);
+  mediaNumeros = sumar(numeros) / numeros.length;
+  modaNumeros = getMostFrequentNumber(numeros);
+  maximoNumeros = Math.max(...numeros);
 
-  function mode(arr) {
-    return arr
-      .sort(
-        (a, b) =>
-          arr.filter((v) => v === a).length - arr.filter((v) => v === b).length
-      )
-      .pop();
-  }
-
-  minimoLista = Math.min(...guardaNumeros);
-  mediaLista = sumaLista / guardaNumeros.length;
-  modaLista = mode(guardaNumeros);
-  maximoLista = Math.max(...guardaNumeros);
-
-  document.querySelector('#minimo').value = `minimo ${minimoLista}`;
-  document.querySelector('#media').value = `media ${mediaLista}`;
-  document.querySelector('#moda').value = `moda ${modaLista}`;
-  document.querySelector('#maximo').value = `maximo ${maximoLista}`;
+  document.querySelector('#minimo').value = `minimo ${minimoNumeros}`;
+  document.querySelector('#media').value = `media ${mediaNumeros}`;
+  document.querySelector('#moda').value = `moda ${modaNumeros}`;
+  document.querySelector('#maximo').value = `maximo ${maximoNumeros}`;
 
   return false;
 };
