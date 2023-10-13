@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="clase-6-tarea-2.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <form id="integrantes-salarios">
+      <h2>Clase 6 - tarea 2</h2>
+      <p class="text-lg-left">
+        A continuación ingresa la cantidad de integrantes de tu familia.
+      </p>
+      <p class="text-lg-left">
+        Luego presionar botón 'Completar salario' para ingresar el salario anual
+        de cada integrante. Finalmente presionar botón 'Calcular' para obtener
+        medidas resumen del salario familiar.
+      </p>
+
+      <br />
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="row g-3 align-items-center"></div>
+            <div id="salario" name="salario" class="col-auto"></div>
+
+            <label for="cantidad-integrantes-familia" class="col-form-label"
+              >Cantidad de integrantes en la familia:</label
+            >
+
+            <div class="col-auto">
+              <input
+                type="number"
+                id="cantidad-integrantes-familia"
+                class="form-control"
+                aria-describedby="passwordHelpInline"
+              />
+            </div>
+            <div class="col-auto">
+              <span id="passwordHelpInline" class="form-text">
+                Debe ingresar un número entero positivo.
+              </span>
+            </div>
+
+            <br /><br />
+            <button
+              id="boton-cantidad-integrantes"
+              class="btn btn-outline-success"
+            >
+              Completar salario
+            </button>
+            <br /><br />
+            <button id="boton-agregar" class="btn btn-outline-secondary">
+              Agregar
+            </button>
+            <button id="boton-quitar" class="btn btn-outline-secondary">
+              Quitar</button
+            ><br /><br />
+            <button id="boton-calcular" class="btn btn-outline-success">
+              Calcular
+            </button>
+
+            <button type="reset" id="resetear" class="btn btn-outline-danger">
+              Resetear
+            </button>
+          </div>
+          <div class="col-8">
+            <label> Menor salario </label>
+            <input
+              id="menor-salario"
+              disabled
+              class="form-control"
+              aria-label="Disabled input example"
+            />
+            <br />
+            <label> Promedio salario anual </label>
+            <input
+              id="promedio-salario-anual"
+              disabled
+              disabled
+              class="form-control"
+              aria-label="Disabled input example"
+            />
+            <br />
+            <label> Promedio salario mensual </label>
+            <input
+              id="promedio-salario-mensual"
+              disabled
+              disabled
+              class="form-control"
+              aria-label="Disabled input example"
+            />
+            <br />
+            <label> Mayor salario </label>
+            <input
+              id="mayor-salario"
+              disabled
+              disabled
+              class="form-control"
+              aria-label="Disabled input example"
+            />
+          </div>
+        </div>
+      </div>
+
+      <ul id="errores"></ul>
+    </form>
+
+    <script src="clase-6-tarea-2.js"></script>
+    <script src="clase-6-tarea-2-pruebas.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
