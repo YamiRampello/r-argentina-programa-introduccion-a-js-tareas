@@ -98,10 +98,10 @@ function contarError(numeros) {
   let contadorErorr = 0;
 
   for (let i = 0; i < numeros.length; i++) {
-    if (validarSalario(numeros[i]) !== '') {
+    if (validarSalario(numeros[i])) {
+      //console.log(validarSalario(numeros[i]) !== ''); //false
+      //Boolean('') es false, por eso va asi
       contadorErorr++;
-    } else {
-      ('');
     }
   }
 
@@ -154,10 +154,7 @@ $botonCalcular.onclick = function () {
     document.querySelector('#mayor-salario').value = maximoSalarios;
     document.querySelector('#promedio-salario-mensual').value =
       mediaSalarioMensual;
-  } else {
-    ('');
   }
-
   return false;
 };
 
@@ -191,7 +188,7 @@ function manejarErrores(errores, identificaError) {
     const error = errores[key];
 
     if (identificaError === 'integrantes') {
-      if (error === '') {
+      if (!error) {
         $form[key].className = '';
       } else {
         $form[key].className = 'error';

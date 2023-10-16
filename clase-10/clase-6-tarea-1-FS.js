@@ -11,7 +11,7 @@ Punto bonus: Crear un botón para "empezar de nuevo" que empiece el proceso nuev
 const $form = document.querySelector('#calculador-edades');
 
 document.querySelector('#siguiente-paso').onclick = function (event) {
-  const identificaError = 'cantidadIntegrantes';
+  const identificadorError = 'cantidadIntegrantes';
   const $cantidadIntegrantes = document.querySelector('#cantidad-integrantes');
   const cantidadIntegrantes = Number($cantidadIntegrantes.value);
   const errorCantidadIntegrantes =
@@ -22,19 +22,18 @@ document.querySelector('#siguiente-paso').onclick = function (event) {
   const mensajesErrores = document.querySelector('ul');
   mensajesErrores.innerHTML = '';
 
-  manejarErrores(errores, identificaError);
+  manejarErrores(errores, identificadorError);
   borrarIntegrantesAnteriores();
 
-  if (errorCantidadIntegrantes === '') {
+  if (!errorCantidadIntegrantes) {
     crearIntegrantes(cantidadIntegrantes);
-  } else {
-    ('');
   }
+
   event.preventDefault();
 };
 
 document.querySelector('#calcular').onclick = function (event) {
-  const identificaError = 'calcularEdades';
+  const identificadorError = 'calcularEdades';
   const numeros = obtenerEdadesIntegrantes();
   const errorEdad = guardarErrores(numeros);
   const cantidadErrores = contarError(numeros);
@@ -52,7 +51,7 @@ document.querySelector('#calcular').onclick = function (event) {
     mostrarEdad('promedio', obtenerPromedio(numeros));
     mostrarResultados();
   } else {
-    manejarErrores(errores, identificaError);
+    manejarErrores(errores, identificadorError);
   }
 
   event.preventDefault();
@@ -80,35 +79,46 @@ function guardarErrores(numeros) {
   return errorEdad;
 }
 
-function manejarErrores(errores, identificaError) {
+function manejarErrores(errores, identificadorError) {
   const keys = Object.keys(errores);
-  const $errores = document.querySelector('#errores');
 
   keys.forEach(function (key) {
     const error = errores[key];
 
-    if (identificaError === 'cantidadIntegrantes') {
-      if (error === '') {
-        $form[key].className = '';
-      } else {
-        $form[key].className = 'error';
-        const $error = document.createElement('li');
-        $error.innerText = error;
-        $errores.appendChild($error);
-      }
+    if (identificadorError === 'cantidadIntegrantes') {
+      agregarError(error, key);
     } else {
-      for (let i = 0; i < error.length; i++) {
-        if (error[i] === '') {
-          $form[key][i].className = '';
-        } else {
-          $form[key][i].className = 'error';
-          const $error = document.createElement('li');
-          $error.innerText = error[i];
-          $errores.appendChild($error);
-        }
-      }
+      agregarErrores(error, key);
     }
   });
+}
+
+function agregarErrores(error, key) {
+  const $errores = document.querySelector('#errores');
+  for (let i = 0; i < error.length; i++) {
+    if (!error[i]) {
+      $form[key][i].className = '';
+    } else {
+      $form[key][i].className = 'error';
+      const $error = document.createElement('li');
+      $error.innerText = error[i];
+      $errores.appendChild($error);
+    }
+  }
+}
+
+function agregarError(error, key) {
+  const $errores = document.querySelector('#errores');
+  if (!error) {
+    //no hay error
+    $form[key].className = '';
+  } else {
+    // error
+    $form[key].className = 'error';
+    const $error = document.createElement('li');
+    $error.innerText = error;
+    $errores.appendChild($error);
+  }
 }
 
 document.querySelector('#resetear').onclick = resetear;
