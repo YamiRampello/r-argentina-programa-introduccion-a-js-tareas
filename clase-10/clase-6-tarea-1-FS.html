@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="clase-6-tarea-1-FS.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>Tarea 6</title>
+  </head>
+  <body>
+    <form id="calculador-edades">
+      <div class="row g-3 align-items-center">
+        <div class="input-group">
+          <span class="input-group-text"
+            >Ingrese la cantidad de integrantes</span
+          >
+          <input
+            type="number"
+            aria-label="First name"
+            class="form-control"
+            id="cantidad-integrantes"
+          />
+        </div>
+      </div>
+      <br />
+
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button
+          name="submit"
+          id="siguiente-paso"
+          class="btn btn-outline-primary"
+        >
+          Siguiente
+        </button>
+        <button type="reset" id="resetear" class="btn btn-outline-primary">
+          Resetear
+        </button>
+      </div>
+      <br />
+      <br />
+      <button
+        type="button"
+        id="calcular"
+        class="oculto"
+        aria-label="Third group"
+      >
+        Calcular
+      </button>
+      <br />
+      <div id="integrantes" name="integrantes"></div>
+      <br />
+      <div id="analisis" class="oculto">
+        <p class="text-primary">
+          La edad mayor es: <strong id="mayor-edad"></strong>
+        </p>
+        <p class="text-primary">
+          La menor edad es: <strong id="menor-edad"></strong>
+        </p>
+        <p class="text-primary">
+          El promedio de edad es: <strong id="promedio-edad"></strong>
+        </p>
+      </div>
+      <p></p>
+
+      <ul id="errores"></ul>
+    </form>
+
+    <script
+      type="text/javascript"
+      src="src/clase-6-tarea-1-FS-calculos.js"
+    ></script>
+    <script type="text/javascript" src="src/clase-6-tarea-1-FS.js"></script>
+    <script
+      type="text/javascript"
+      src="src/clase-6-tarea-1-FS-pruebas.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

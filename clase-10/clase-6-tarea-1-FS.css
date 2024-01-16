@@ -1,0 +1,15 @@
+.oculto {
+  display: none;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+#calcular {
+  border-radius: 12px;
+  background-color: rgb(227, 238, 240);
+  color: #537ff5;
+  border: 3px solid #537ff5;
+  font-size: 18px;
+}

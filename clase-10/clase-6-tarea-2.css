@@ -1,0 +1,11 @@
+label {
+  color: rgb(115, 107, 105);
+  font-size: 1.05rem;
+}
+.oculto {
+  display: none;
+}
+
+.error {
+  border: 2px solid red;
+}
